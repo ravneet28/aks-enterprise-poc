@@ -11,5 +11,6 @@ terraform {
 
 provider "azurerm" {
   # Configuration options
-  subscription_id = var.subscription_id
+  features {}
+    #   subscription_id = var.subscription_id
 }

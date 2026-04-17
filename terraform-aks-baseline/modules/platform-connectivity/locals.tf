@@ -28,12 +28,12 @@ locals {
   # ------------------------------------------------------------
   # Resource naming
   # ------------------------------------------------------------
-  rg_name = "rg-${local.prefix}-platform-connectivity-${local.env}-${local.region_abbr}"
+  rg_name         = "rg-${local.prefix}-platform-connectivity-${local.env}-${local.region_abbr}"
   hub_vnet_name   = "${local.prefix}-platform-vnet-hub-${local.env}-${local.region_abbr}-01"
   spoke_vnet_name = "${local.prefix}-aks-vnet-spoke-${local.env}-${local.region_abbr}-01"
-  hub_subnets   = var.hub_subnets
-  spoke_subnets = var.spoke_subnets
-  
+  hub_subnets     = var.hub_subnets
+  spoke_subnets   = var.spoke_subnets
+
   # Optional helper for consistent naming later
   name_prefix = "${local.prefix}-${local.env}-${local.region_abbr}"
 }

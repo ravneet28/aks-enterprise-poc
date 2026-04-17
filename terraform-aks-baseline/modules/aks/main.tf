@@ -41,8 +41,9 @@ resource "azurerm_kubernetes_cluster" "this" {
   # ----------------------------------------------------------
   # Azure AD & RBAC (MANDATORY)
   # ----------------------------------------------------------
-  azure_active_directory_role_based_access_control {   
-    azure_rbac_enabled     = true
+  azure_active_directory_role_based_access_control {
+    tenant_id          = var.tenant_id
+    azure_rbac_enabled = true
   }
 
   local_account_disabled = true
@@ -51,12 +52,12 @@ resource "azurerm_kubernetes_cluster" "this" {
   # Default (system) node pool
   # ----------------------------------------------------------
   default_node_pool {
-    name                = local.system_node_pool_name
-    vm_size             = var.system_node_pool.vm_size
-    node_count          = var.system_node_pool.node_count
-    vnet_subnet_id      = var.node_subnet_id
+    name                 = local.system_node_pool_name
+    vm_size              = var.system_node_pool.vm_size
+    node_count           = var.system_node_pool.node_count
+    vnet_subnet_id       = var.node_subnet_id
     orchestrator_version = var.kubernetes_version
-    type                = "VirtualMachineScaleSets"
+    type                 = "VirtualMachineScaleSets"
     node_labels = {
       "nodepool-type" = "system"
     }

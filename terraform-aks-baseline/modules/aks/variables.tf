@@ -11,26 +11,32 @@ variable "prefix" {
 variable "env" {
   description = "Environment code"
   type        = string
-    nullable    = false
+  nullable    = false
 }
 
 variable "location" {
   description = "Azure region"
   type        = string
-  
-    nullable    = false
+
+  nullable = false
 }
 
 variable "region_abbr" {
   description = "Region abbreviation"
   type        = string
-  
-    nullable    = false
+
+  nullable = false
 }
 
 variable "tags" {
   description = "Base tags"
   type        = map(string)
+  nullable    = false
+}
+
+variable "tenant_id" {
+  description = "Azure tenant ID used for AKS Azure AD integration"
+  type        = string
   nullable    = false
 }
 
@@ -76,9 +82,9 @@ variable "kubernetes_version" {
   type        = string
 
   validation {
-  condition     = can(regex("^1\\.(2[7-9]|3[0-9])", var.kubernetes_version))
-  error_message = "Kubernetes version must be 1.27 or higher."
-    }
+    condition     = can(regex("^1\\.(2[7-9]|3[0-9])", var.kubernetes_version))
+    error_message = "Kubernetes version must be 1.27 or higher."
+  }
 }
 
 variable "system_node_pool" {

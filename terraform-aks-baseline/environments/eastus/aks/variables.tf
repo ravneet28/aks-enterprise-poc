@@ -2,6 +2,18 @@
 # Context
 # ------------------------------------------------------------
 
+variable "subscription_id" {
+  description = "Azure subscription ID for this environment"
+  type        = string
+  nullable    = false
+}
+
+variable "tenant_id" {
+  description = "Azure tenant ID used for AKS Azure AD integration"
+  type        = string
+  nullable    = false
+}
+
 variable "prefix" {
   description = "Naming prefix"
   type        = string
@@ -29,6 +41,28 @@ variable "region_abbr" {
 variable "tags" {
   description = "Base tags"
   type        = map(string)
+  nullable    = false
+}
+
+# ------------------------------------------------------------
+# Remote state
+# ------------------------------------------------------------
+
+variable "tfstate_rg" {
+  description = "Resource group containing Terraform state storage"
+  type        = string
+  nullable    = false
+}
+
+variable "tfstate_storage" {
+  description = "Storage account name for Terraform state"
+  type        = string
+  nullable    = false
+}
+
+variable "tfstate_container" {
+  description = "Blob container name for Terraform state"
+  type        = string
   nullable    = false
 }
 

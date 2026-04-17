@@ -30,7 +30,7 @@ resource "azurerm_virtual_network" "spoke" {
 }
 
 resource "azurerm_subnet" "spoke" {
-  for_each = locals.spoke_subnets
+  for_each = local.spoke_subnets
 
   name                 = each.key
   resource_group_name  = azurerm_resource_group.this.name
@@ -61,7 +61,7 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke" {
 
   allow_virtual_network_access = true
   allow_forwarded_traffic      = true
-  allow_gateway_transit        = true
+  allow_gateway_transit        = false
 }
 
 resource "azurerm_virtual_network_peering" "spoke_to_hub" {
@@ -72,5 +72,5 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
 
   allow_virtual_network_access = true
   allow_forwarded_traffic      = true
-  use_remote_gateways          = true
+  use_remote_gateways          = false
 }

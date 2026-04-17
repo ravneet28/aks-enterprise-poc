@@ -81,8 +81,8 @@ env = sbx
 Current implementation uses:
 
 ```
-region = eastus
-region_abbr = eus
+region = eastus        # For Azure API usage (e.g., Terraform, Azure CLI)
+region_abbr = eus      # For resource naming patterns
 ```
 
 ---
@@ -227,7 +227,7 @@ All resources must include the following tags:
 ```
 environment = sbx
 workload    = aks-baseline
-owner       = ravneet
+owner       = ""
 managed-by  = terraform
 ```
 
@@ -249,7 +249,7 @@ locals {
   tags = {
     environment = local.env
     workload    = "aks-baseline"
-    owner       = "ravneet"
+    owner       = ""
     managed-by  = "terraform"
   }
 }

@@ -1,9 +1,3 @@
-variable "subscription_id" {
-  description = "Azure subscription ID where resources will be deployed"
-  type        = string
-  nullable    = false
-}
-
 # ------------------------------------------------------------
 # Context
 # ------------------------------------------------------------

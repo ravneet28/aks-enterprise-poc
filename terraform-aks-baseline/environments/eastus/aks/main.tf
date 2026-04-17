@@ -11,6 +11,7 @@ module "aks" {
   location    = var.location
   region_abbr = var.region_abbr
   tags        = var.tags
+  tenant_id   = var.tenant_id
 
   # Placement
   resource_group_name = data.terraform_remote_state.platform_connectivity.outputs.resource_group_name
@@ -28,4 +29,3 @@ module "aks" {
   system_node_pool   = var.system_node_pool
   user_node_pools    = var.user_node_pools
 }
-

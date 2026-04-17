@@ -34,16 +34,17 @@ resource "azurerm_kubernetes_cluster" "this" {
   # ----------------------------------------------------------
   private_cluster_enabled = true
 
-  api_server_access_profile {
-    subnet_id = var.apiserver_subnet_id
-  }
+  # api_server_access_profile {
+  #   virtual_network_integration_enabled = true
+  #   subnet_id                           = var.apiserver_subnet_id
+  # }
 
   # ----------------------------------------------------------
   # Azure AD & RBAC (MANDATORY)
   # ----------------------------------------------------------
   azure_active_directory_role_based_access_control {
-    tenant_id          = var.tenant_id
-    azure_rbac_enabled = true
+    admin_group_object_ids = var.admin_group_object_ids
+    azure_rbac_enabled     = true
   }
 
   local_account_disabled = true

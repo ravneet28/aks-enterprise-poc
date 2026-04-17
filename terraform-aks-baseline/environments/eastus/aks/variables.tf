@@ -8,12 +8,6 @@ variable "subscription_id" {
   nullable    = false
 }
 
-variable "tenant_id" {
-  description = "Azure tenant ID used for AKS Azure AD integration"
-  type        = string
-  nullable    = false
-}
-
 variable "prefix" {
   description = "Naming prefix"
   type        = string
@@ -100,4 +94,11 @@ variable "user_node_pools" {
     node_count = number
   }))
   default = {}
+}
+
+variable "admin_group_object_ids" {
+  description = "Microsoft Entra group object IDs that receive AKS cluster admin access."
+  type        = list(string)
+  default     = []
+  nullable    = false
 }

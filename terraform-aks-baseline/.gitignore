@@ -5,6 +5,7 @@
 *.tfvars
 .crash.log
 .terraformrc
+.terraform.lock.hcl
 
 # Azure DevOps
 .azure-pipelines/

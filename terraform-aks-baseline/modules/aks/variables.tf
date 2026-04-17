@@ -34,12 +34,6 @@ variable "tags" {
   nullable    = false
 }
 
-variable "tenant_id" {
-  description = "Azure tenant ID used for AKS Azure AD integration"
-  type        = string
-  nullable    = false
-}
-
 # ------------------------------------------------------------
 # Networking (from platform-connectivity)
 # ------------------------------------------------------------
@@ -50,11 +44,11 @@ variable "node_subnet_id" {
   nullable    = false
 }
 
-variable "apiserver_subnet_id" {
-  description = "Subnet ID for AKS API server VNet integration"
-  type        = string
-  nullable    = false
-}
+# variable "apiserver_subnet_id" {
+#   description = "Subnet ID for AKS API server VNet integration"
+#   type        = string
+#   nullable    = false
+# }
 
 # ------------------------------------------------------------
 # Monitoring (from platform-management)
@@ -76,6 +70,12 @@ variable "resource_group_name" {
   nullable    = false
 }
 
+variable "admin_group_object_ids" {
+  description = "Microsoft Entra group object IDs that receive AKS cluster admin access."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}
 
 variable "kubernetes_version" {
   description = "AKS Kubernetes version"
